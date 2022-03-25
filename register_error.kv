@@ -1,0 +1,29 @@
+
+
+
+
+
+
+<ErrorPopup>:
+    
+    title: ''
+    separator_height: 0
+    size_hint: .85, .2
+
+    GridLayout:
+        cols: 1
+        spacing: 5
+
+        StackLayout:
+            MDLabel:
+                text: 'Username is already taken'
+                font_style: 'H5'
+                halign: 'center'
+            Widget:
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+
+            MDRectangleFlatButton:
+                text: 'ok'
+                on_release: root.dismiss()

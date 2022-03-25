@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+#: import NewFile create_file_popup.NewFile
+
+
+<NewFile@Popup>:
+    title: ''
+    separator_height: 0
+
+    size_hint: .85, .25
+
+    GridLayout:
+        spacing: 10
+        cols: 1
+        StackLayout:
+            size_hint: 1, .25
+            orientation: 'bt-lr'
+            padding: dp(25)
+            MDLabel:
+                
+                text: 'File name'
+                halign: 'center'
+                font_style: 'H5'
+        MDTextField:
+            id: file_name
+            size_hint: 1, .55
+
+        StackLayout:
+            size_hint: 1, .45
+            orientation: 'tb-rl'
+            spacing: 10
+
+            MDFlatButton:
+                text: "save"
+                md_bg_color: 1, 1, 1, 0
+                font_size: dp(20)
+                size_hint: None, 1
+                on_release: NewFile.save_file(root)
+
+            MDFlatButton:
+                text: "exit"
+                md_bg_color: 1, 1, 1, 1
+                font_size: dp(20)
+                size_hint: None, 1
+                on_release: root.dismiss()
+
+

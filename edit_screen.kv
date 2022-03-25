@@ -1,0 +1,40 @@
+
+
+
+
+
+#: import Window kivy.core.window.Window
+
+
+<Edit>:
+
+    GridLayout:
+        orientation: 'tb-lr'
+        cols: 1
+
+        MDToolbar:
+            id: toolbar
+            md_bg_color: app.theme_cls.bg_dark
+            elevation: 10
+            left_action_items: [['arrow-left', root.go_back]]
+            right_action_items: [['content-save-outline', root.save_file],['dots-vertical']]
+            
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: 1,1
+            ScrollView:
+                id: scroll
+                TextInput:
+                    id: text_input
+                    multiline: True
+                    size_hint: 1,None
+                    background_color: 0,0,0,0
+                    foreground_color: 1,1,1,1
+                    on_text: root.ontextil()
+                    on_touch_down: root.scrollto()
+                    height_to_scroll: 0
+                    height: max(self.minimum_height, scroll.height)
+                    on_height: root.change_height()
+            
+        
+

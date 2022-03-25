@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+<SettingsScreen>:
+    GridLayout:
+        cols: 1
+        MDToolbar:
+            id: toolbar
+            title: 'Settings'
+            anchor_title: 'center'
+            md_bg_color: self.theme_cls.bg_dark
+            left_action_items: [['arrow-left', root.go_back]]
+            right_action_items: [['reload', root.default_options]]
+
+        RecycleView:
+            id: settings_options
+            key_viewclass: 'viewclass'
+            size_hint: 1, .95
+            adaptive_height: True
+            RecycleBoxLayout:
+                padding: dp(5)
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+

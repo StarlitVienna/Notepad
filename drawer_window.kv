@@ -1,0 +1,42 @@
+
+
+
+
+
+
+
+
+#: import login_popup login_popup
+#: import StringProperty kivy.properties.StringProperty
+
+<IconForListItem>:
+    IconLeftWidget:
+        icon: root.icon
+
+<CreateFolders@Popup>:
+    title: ""
+    separator_height: 0
+    size_hint: .85, .25
+
+    GridLayout:
+        cols: 1
+        MDLabel:
+            text: 'Folder name:'
+            halign: 'center'
+            font_style: 'H5'
+
+        MDTextField:
+            id: folder_name
+            max_text_length: 100
+            pos_hint: {'center_x': .5, 'center_y': .5}
+        
+        StackLayout:
+            orientation: 'bt-rl'
+            MDFlatButton:
+                text: 'Create folder'
+                on_release: root.create_folder()
+            
+
+    
+
+<Drawer>:

@@ -1,0 +1,144 @@
+
+
+
+
+
+
+#: include create_files.kv
+#: include login_popup.kv
+#: include register.kv
+#: include register_error.kv
+#: include edit_screen.kv
+#: include searcher.kv
+#: include drawer_window.kv
+#: include settings.kv
+#: import main main
+#: import Edit edit_screen.Edit
+#: import Drawer drawer_window.Drawer
+#: import CreateFolders drawer_window.CreateFolders
+#: import NewFile create_file_popup.NewFile
+#: import Factory kivy.factory.Factory
+#: import login_popup login_popup
+#: import LoginPopup login_popup.LoginPopup
+#: import Search searcher.Search
+#: import SettingsScreen settings.SettingsScreen
+
+
+
+
+
+
+ManageScreens:
+    InitialScreen:
+    Edit:
+    SettingsScreen:
+
+<NoteIcon>:
+
+    IconLeftWidget:
+        icon: root.icon
+
+<Edit>:
+    name: 'editor'
+
+<SettingsScreen>:
+    name: 'settings'
+
+<InitialScreen>:
+    name: 'FirstScreen'
+    
+    StackLayout:
+        MDBoxLayout:
+            adaptive_height: True
+            padding: dp(10)
+            size_hint: 1, .05
+            orientation: "horizontal"
+            MDIconButton:
+                icon: "menu"
+                pos_hint: {'center_x': .5, 'center_y': .1}
+                on_release: nav_drawer.set_state('open')
+
+            Search:
+                pos_hint: {'center_x': .5, 'center_y': .1}
+            MDIconButton:
+                icon: "magnify"
+                pos_hint: {'center_x': .5, 'center_y': .1}
+
+
+        RecycleView:
+            id: rv
+            key_viewclass: 'viewclass'
+            size_hint: 1, .95
+            adaptive_height: True
+            RecycleBoxLayout:
+                padding: dp(5)
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+    MDFloatingActionButton:
+        data: {}
+        icon: 'plus'
+        pos_hint: {'center_x': .9, 'center_y': .1}
+        on_release: Factory.NewFile().open()
+
+    
+    LoginPopup:
+        id: login
+        pos_hint: {'center_x': .5, 'center_y': .5}
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        Drawer:
+            GridLayout:
+                cols: 1
+                MDBoxLayout:
+                    orientaion: 'vertical'
+                    adaptive_height: True
+                    MDLabel:
+                        id: user_label
+                        font_style: 'H5'
+                        halign: 'center'
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    adaptive_height: True
+                    
+                    MDIconButton:
+                        id: delete_button
+                        disabled: True
+                        opacity: 0
+                        icon: 'delete'
+                    MDIconButton:
+                        id: edit_button
+                        disabled: True
+                        opacity: 0
+                        icon: 'rename-box'
+                RecycleView:
+                    id: folders_view
+
+                    key_viewclass: 'viewclass'
+                    adaptive_height: True
+                    RecycleBoxLayout:
+                        padding: dp(5)
+                        default_size: None, dp(56)
+                        default_size_hint: 1, None
+                        size_hint_y: None
+                        height: self.minimum_height
+                        orientation: 'vertical'
+                
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    adaptive_height: True
+
+                    MDIconButton:
+                        icon: 'plus'
+                        id: create_folders
+                        disabled: True
+                        opacity: 0
+                        on_release: Factory.CreateFolders().open()
+                        pos_hint: {'center_x': .5}
+
+
+
+

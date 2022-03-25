@@ -1,0 +1,82 @@
+
+
+
+
+
+
+#: import threading threading
+#: import LoginPopup login_popup.LoginPopup
+#: import main main
+#: import Factory kivy.factory
+
+<LoginPopup@Popup>:
+    title: ""
+    separator_height: 0
+    auto_dismiss: False
+    size_hint: .75, .55
+    GridLayout:
+        cols: 1
+        spacing: 10
+
+        Widget:
+            size_hint: None, None
+            height: dp(30)
+
+        StackLayout:
+            size_hint: 1, .5
+            orientation: 'tb-lr'
+
+            MDLabel:
+                text: 'Login'
+                halign: 'center'
+                font_style: 'H4'
+        Widget:
+        Widget:
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .25
+            MDTextField:
+                id: username
+                hint_text: 'Username'
+                icon_left: 'account'
+                size_hint: .85, None
+                pos_hint: {'center_x': .5}
+                normal_color: 0,0,0,0
+            
+        Widget:
+            size_hint: None, None
+            height: dp(25)
+        MDBoxLayout:
+            size_hint: 1, .25
+            orientation: 'vertical'
+            MDTextField:
+                id: password
+                hint_text: 'Password'
+                size_hint: .85, None
+                pos_hint: {'center_x': .5}
+                normal_color: 0,0,0,0
+                password: True
+        Widget:
+            size_hint: None, None
+            height: dp(5)
+        
+        RelativeLayout:        
+            MDRectangleFlatButton:
+                id: login_button
+                size_hint: .45, None
+                text: 'Login'
+                pos_hint: {'center_x': .5}
+                on_press: threading.Thread(target=root.login).start()
+
+        Widget:
+            size_hint: None, None
+            height: dp(5)
+        RelativeLayout:
+            MDFlatButton:
+                text: 'Register'
+                size_hint: .4, None
+                pos_hint: {'center_x': .5}
+                on_release: root.register_popup()
+        Widget:
+            size_hint: None, None
+            height: dp(10)

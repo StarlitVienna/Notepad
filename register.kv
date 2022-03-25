@@ -1,0 +1,62 @@
+
+
+
+
+
+
+#: import threading threading
+
+<RegisterPopup>:
+    
+    title: ''
+    separator_height: 0
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    size_hint: .75, .55
+    GridLayout:
+        cols: 1
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .25
+            MDLabel:
+                text: 'Register'
+                font_style: 'H4'
+                halign: 'center'
+            
+            MDLabel:
+                text: 'Accounts are stored in the cloud'
+                halign: 'center'
+            Widget:
+
+            
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .25
+            MDTextField:
+                id: register_username
+                hint_text: 'Username'
+                max_text_length: 24
+                size_hint: .75, None
+                pos_hint: {'center_x': .5}
+
+            MDTextField:
+                id: register_password
+                multiline: True
+                size_hint: .75, None
+                hint_text: 'Password'
+                pos_hint: {'center_x': .5}
+                password: True
+            
+            Widget:
+
+            MDRectangleFlatButton:
+                size_hint: .4, None
+                text: 'Register'
+                pos_hint: {'center_x': .5}
+                on_release: threading.Thread(target=root.register_user).start()
+            Widget:
+
+
+
+
+
